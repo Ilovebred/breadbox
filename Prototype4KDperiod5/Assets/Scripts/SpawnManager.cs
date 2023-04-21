@@ -30,10 +30,8 @@ public class SpawnManager : MonoBehaviour
         Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
       }
 
-      if(enemyCount == 5)
-      {
-        Instantiate(enemybigPrefab, GenerateSpawnPosition(), enemybigPrefab.transform.rotation);
-      }
+      
+
 
     }
 

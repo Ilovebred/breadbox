@@ -9,7 +9,9 @@ public class SpawnManager : MonoBehaviour
     public GameObject powerupPrefab;
     private float spawnRange = 9.0f;
     public int enemyCount;
+    private bool enemybig = true;
     public int waveNumber = 1;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +32,13 @@ public class SpawnManager : MonoBehaviour
         Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
       }
 
-      
+      if(enemyCount == 4 && enemybig)
+      {
+        Instantiate(enemybigPrefab, GenerateSpawnPosition(), enemybigPrefab.transform.rotation);
+        Instantiate(enemybigPrefab, GenerateSpawnPosition(), enemybigPrefab.transform.rotation);
+        enemybig = false;
+      }
+
 
 
     }

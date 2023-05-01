@@ -25,19 +25,24 @@ public class SpawnManager : MonoBehaviour
     {
       enemyCount = FindObjectsOfType<Enemy>().Length;
 
-      if(enemyCount == 0)
+      if(enemyCount == 0) 
       {
+        enemybig = true;
         waveNumber++;
         SpawnEnemyWave(waveNumber);
         Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
       }
 
-      if(enemyCount == 4 && enemybig)
+      if(enemyCount > 5 && enemybig)
       {
-        Instantiate(enemybigPrefab, GenerateSpawnPosition(), enemybigPrefab.transform.rotation);
-        Instantiate(enemybigPrefab, GenerateSpawnPosition(), enemybigPrefab.transform.rotation);
+        for(int i = 0; i < enemyCount-5; i++ ){Instantiate(enemybigPrefab, GenerateSpawnPosition(), enemybigPrefab.transform.rotation);}
         enemybig = false;
       }
+
+      
+      
+
+      
 
 
 

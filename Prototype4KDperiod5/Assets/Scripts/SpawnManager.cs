@@ -16,6 +16,8 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+      //Controls enemy spawns
+      //spawns regular enemies
       SpawnEnemyWave(waveNumber);
       Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
     }
@@ -23,9 +25,11 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      //the enemy count or number of enemies spawned
       enemyCount = FindObjectsOfType<Enemy>().Length;
 
       if(enemyCount == 0) 
+      //Spawns power ups
       {
         enemybig = true;
         waveNumber++;
@@ -34,6 +38,7 @@ public class SpawnManager : MonoBehaviour
       }
 
       if(enemyCount > 5 && enemybig)
+      //spawns Hard enemys
       {
         for(int i = 0; i < enemyCount-5; i++ ){Instantiate(enemybigPrefab, GenerateSpawnPosition(), enemybigPrefab.transform.rotation);}
         enemybig = false;
@@ -47,6 +52,7 @@ public class SpawnManager : MonoBehaviour
 
 
     }
+    //number of enemies per wave
 
     void SpawnEnemyWave(int enemiesToSpawn)
     {
@@ -61,6 +67,7 @@ public class SpawnManager : MonoBehaviour
 
 
     private Vector3 GenerateSpawnPosition()
+    //where enemies spawn
     {
        float SpawnPosX = Random.Range(-spawnRange, spawnRange);
        float SpawnPosZ = Random.Range(-spawnRange, spawnRange);
